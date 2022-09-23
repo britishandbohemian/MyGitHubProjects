@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AccomadationBookings" Member="AccomadationBookings">
+    <Type Name="AccomadationBooking">
+      <Column Name="BookingsId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BookingDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Booking" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="AcoomadationID" Member="AccomadationID" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Association Name="AccomadationBooking_Accomdation" Member="Accomdations" ThisKey="AccomadationID" OtherKey="AccomadationID" Type="Accomdation" />
+      <Association Name="Student_AccomadationBooking" Member="Student" ThisKey="BookingsId" OtherKey="BookingsId" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserContact" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserSurname" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Type Name="Owner">
+        <Column Name="OwnerID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+        <Column Name="UserId" Type="System.String" CanBeNull="false" />
+        <Association Name="Owner_Accomdation" Member="Accomdations" ThisKey="OwnerID" OtherKey="OwnerId" Type="Accomdation" />
+      </Type>
+      <Type Name="Student">
+        <Column Name="StudentId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+        <Column Name="BookingId" Member="BookingsId" Type="System.Int32" DbType="Int" CanBeNull="false" />
+        <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+        <Column Name="funding" Type="System.String" CanBeNull="false" />
+        <Association Name="Student_AccomadationBooking" Member="AccomadationBookings" ThisKey="BookingsId" OtherKey="BookingsId" Type="AccomadationBooking" />
+        <Association Name="BookMark_Student" Member="BookMark" ThisKey="StudentId" OtherKey="StudentId" Type="BookMark" IsForeignKey="true" />
+      </Type>
+    </Type>
+  </Table>
+  <Table Name="dbo.Accomdations" Member="Accomdations">
+    <Type Name="Accomdation">
+      <Column Name="AccomadationID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AccomadationName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AccomadationLocation" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AccomadationRating" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccomadationFacilities" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AccomadationDescription" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Owner_Accomdation" Member="Owner" ThisKey="OwnerId" OtherKey="OwnerID" Type="Owner" IsForeignKey="true" />
+      <Association Name="AccomadationBooking_Accomdation" Member="AccomadationBooking" ThisKey="AccomadationID" OtherKey="AccomadationID" Type="AccomadationBooking" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="AdminId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AdminPassword" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AdminUsername" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BookMarks" Member="BookMarks">
+    <Type Name="BookMark">
+      <Column Name="UserId" Member="StudentId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AccomadationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BookMark_Student" Member="Students" ThisKey="StudentId" OtherKey="StudentId" Type="Student" />
+    </Type>
+  </Table>
+</Database>

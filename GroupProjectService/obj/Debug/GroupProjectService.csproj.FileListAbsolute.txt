@@ -1,0 +1,7 @@
+E:\# 1 - University Of Johannesburg Research\#1-Third Year\Semester 2\Informatics 2B\Group Project\NextLiving\GroupProjectService\bin\GroupProjectService.dll.config
+E:\# 1 - University Of Johannesburg Research\#1-Third Year\Semester 2\Informatics 2B\Group Project\NextLiving\GroupProjectService\bin\GroupProjectService.dll
+E:\# 1 - University Of Johannesburg Research\#1-Third Year\Semester 2\Informatics 2B\Group Project\NextLiving\GroupProjectService\bin\GroupProjectService.pdb
+E:\# 1 - University Of Johannesburg Research\#1-Third Year\Semester 2\Informatics 2B\Group Project\NextLiving\GroupProjectService\obj\Debug\GroupProjectService.csproj.AssemblyReference.cache
+E:\# 1 - University Of Johannesburg Research\#1-Third Year\Semester 2\Informatics 2B\Group Project\NextLiving\GroupProjectService\obj\Debug\GroupProjectService.csproj.CoreCompileInputs.cache
+E:\# 1 - University Of Johannesburg Research\#1-Third Year\Semester 2\Informatics 2B\Group Project\NextLiving\GroupProjectService\obj\Debug\GroupProjectService.dll
+E:\# 1 - University Of Johannesburg Research\#1-Third Year\Semester 2\Informatics 2B\Group Project\NextLiving\GroupProjectService\obj\Debug\GroupProjectService.pdb
