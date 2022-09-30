@@ -15,65 +15,7 @@ namespace GroupProjectService
 
         DataClassesDataContext DB = new DataClassesDataContext();
 
-        //List of Users for the app
-        List<Users> listOfUsers;
-        public List<Users> GetUserInformation()
-        {
-            //Set the count to 0 and loop through entire table
-            int NumberOfUsers = 0;
-            foreach(var item in DB.Users)
-            {
-                //Go through each user and get the information of each user thereafter add it to the list array
-                listOfUsers[NumberOfUsers].UserName = item.UserName;
-                listOfUsers[NumberOfUsers].UserContact = item.UserContact;
-                listOfUsers[NumberOfUsers].UserId = item.UserId;
-                NumberOfUsers++;
-
-            }
-
-            System.Console.WriteLine(listOfUsers);
-
-            return listOfUsers;
-        }
 
 
-
-
-        string SignUp(String Username, String Password)
-        {
-            return "";
-        }
-        string AddAccomadation(String AccomadationName, String Password)
-        {
-            return "";
-        }
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
-
-        public string Login(string Username, string Password)
-        {
-            throw new NotImplementedException();
-        }
-
-        string NextLivingService.SignUp(string Username, string Password)
-        {
-            throw new NotImplementedException();
-        }
-
-        string NextLivingService.AddAccomadation(string AccomadationName, string Password)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

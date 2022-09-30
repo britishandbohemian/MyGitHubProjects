@@ -14,85 +14,107 @@ namespace GroupProjectService
     {
 
 
+        //_______________________________________
+        //Admin
 
-
-        //User Tab
         [OperationContract]
         //Add A user to the database
-        void AddUser(String Name, String Surname, String Contact);
-
+        void AddAdmin(string Password, string userName);
         //Delete The Users Information From the database
-        void DeletUser(int UserId);
+        void DeleteAdmin(int AdminId);
         //Edit The Users Information
-        void EditUserData(String Name, String Surname, string Contact);
+        void EditAdmin(int AdminId, string UserName, string Password);
+
+
+
+        //____________________________________
+
+        //Add User Tab
+        [OperationContract]
+        //Add A user to the database
+        void AddUser(string Name, string Surname, string Contact, string UserType);
+        //Delete The Users Information From the database
+        void DeleteUser(int UserId);
+        //Edit The Users Information
+        void EditUserData(int UserId, string Name, string Surname, string Contact, string UserType);
 
 
 
 
+
+        //Add A user to the database
+        //Student_____________________________
+
+        //Add Student
+        [OperationContract]
+        void AddStudent(string fundingStatus);
+
+        [OperationContract]
+        //Delete The Users Information From the database
+        void DeleteStudent(int studentId);
+       
+        [OperationContract]
+        //Edit The Users Information
+        void EditStudent(int studentId,int userId, string Name, string Surname, string Contact, string UserType);
+
+
+
+
+
+
+
+        //______________________
+        //Owner
+
+
+        //Delete Owner
+        [OperationContract]
+        void DeleteOwner(int Id);
+
+        //Add Owner
+        [OperationContract]
+        void AddOwner();
+
+        //Edit Owner
+        [OperationContract]
+        void EditOwner(int userId, String Name, String Contact, int Admin);
+
+
+        //______________________
+
+
+
+
+        //Accomadation Table___________________________
         //Add Accoomdation
         [OperationContract]
-        string AddAccomadation(String AccomadationName, String Location, String AccomadationRating, String AccomadationFaclities, String AccomadationDescription,int BookingId);
+        string AddAccomadation(String AccomadationName, String Location, String AccomadationRating, String AccomadationFaclities, String AccomadationDescription);
+
+        //Edit Accomadation
+        [OperationContract]
+        string EditAccomadation(int Id, String AccomadationName, String Location, String AccomadationRating, String AccomadationFaclities, String AccomadationDescription);
 
         //Get Accomadation via ID
         [OperationContract]
-        Accomdations getAccomadation(int Id);
+        Accomdation getAccomadation(int Id);
 
         //Get Accomadation via ID
         [OperationContract]
-        Accomdations DeleteAccomadation(int Id);
+        Accomdation DeleteAccomadation(int Id);
+
+        //___________________________________
 
 
-        //______________________
-        //Done User Funcitons
-        //Add User
+        //Bookmark Accomadation
         [OperationContract]
-        Users AddUser(string Name, string Contact,string Surname,string UserType);
-
-        //Edit User
-        [OperationContract]
-        Users EditUser(int Id,String Name, string Contact, string Surname);
-
-
-        //Delete User
-        [OperationContract]
-        Users DeleteUser(int Id);
-
-
-
-
-        //______________________
-
-
-
-        //Owner
-        [OperationContract]
-        Owner DeleteOwner(int Id);
-
-        //Delete User
-        [OperationContract]
-        Owner AddOwner();
-
-        //Delete User
-        [OperationContract]
-        Owner DelteOwner(String Name, String Contact, int AccomdationID, int userId, int Admin);
-
-
-
-
-        //Booking
-        //______________________
+        void BookmarkAccomadation(int StudID, int BookmarkID, int AccomdationId);
 
         [OperationContract]
-
-        void BookAccomadation();
-
+        void DeleteBookmark(int BookmarkID);
 
 
-
-
-        //______________________
-
-
+        [OperationContract]
+        void EditBookmark(int StudID, int BookmarkID, int AccomdationId);
 
 
     }
