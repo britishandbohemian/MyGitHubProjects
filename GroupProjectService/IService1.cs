@@ -73,19 +73,20 @@ namespace GroupProjectService
 
         //Add Owner
         [OperationContract]
-        void AddOwner();
+        void AddOwner(string Name, string Surname, string Contact);
 
         //Edit Owner
         [OperationContract]
-        void EditOwner(int userId, String Name, String Contact, int Admin);
-
-
-        //______________________
+        void EditOwner(int userId, string Name, string Surname, string Contact);
 
 
 
 
-        //Accomadation Table___________________________
+
+
+
+        //____________Accomadation Table__________
+
         //Add Accoomdation
         [OperationContract]
         string AddAccomadation(String AccomadationName, String Location, String AccomadationRating, String AccomadationFaclities, String AccomadationDescription);
@@ -94,6 +95,9 @@ namespace GroupProjectService
         [OperationContract]
         string EditAccomadation(int Id, String AccomadationName, String Location, String AccomadationRating, String AccomadationFaclities, String AccomadationDescription);
 
+
+        //________________________________________________
+
         //Get Accomadation via ID
         [OperationContract]
         Accomdation getAccomadation(int Id);
@@ -101,6 +105,11 @@ namespace GroupProjectService
         //Get Accomadation via ID
         [OperationContract]
         Accomdation DeleteAccomadation(int Id);
+
+
+
+
+
 
         //___________________________________
 
@@ -112,9 +121,24 @@ namespace GroupProjectService
         [OperationContract]
         void DeleteBookmark(int BookmarkID);
 
-
-        [OperationContract]
         void EditBookmark(int StudID, int BookmarkID, int AccomdationId);
+
+        //___________________________________
+
+
+        //Add Accomadation
+        [OperationContract]
+        void AddAccomdation(string Name, string location,string Rating, string fac, string des);
+
+        //Add Accomadation
+        [OperationContract]
+        void DeleteAccomdation(int Id);
+
+        //Add Accomadation
+        [OperationContract]
+        void EditAccomdation(int Id, string Name, string location, string Rating, string fac, string des);
+
+
 
 
     }
