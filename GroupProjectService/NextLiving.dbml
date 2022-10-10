@@ -18,7 +18,7 @@
       <Column Name="UserContact" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="UserSurname" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="UserType" Type="System.String" CanBeNull="false" />
-      <Column Member="AdminId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AdminId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="User_Owner" Member="Owners" ThisKey="UserId" OtherKey="UserId" Type="Owner" />
       <Association Name="User_Student" Member="Students" ThisKey="UserId" OtherKey="StudentId" Type="Student" />
       <Association Name="Admin_User" Member="Admin" ThisKey="AdminId" OtherKey="AdminId" Type="Admin" IsForeignKey="true" />
@@ -49,7 +49,7 @@
     <Type Name="BookMark">
       <Column Name="UserId" Member="StudentId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="AccomadationId" Member="AccomadationID" Storage="_AccomadationId" Type="System.Int32" DbType="Int" CanBeNull="false" />
-      <Column Member="BookmarkID" Type="System.Int32" CanBeNull="false" />
+      <Column Name="BookmarkID" Type="System.Int32" CanBeNull="false" />
       <Association Name="BookMark_Student" Member="Students" ThisKey="StudentId" OtherKey="StudentId" Type="Student" />
     </Type>
   </Table>

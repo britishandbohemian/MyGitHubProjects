@@ -5,3 +5,10 @@ E:\# 1 - University Of Johannesburg Research\#1-Third Year\Semester 2\Informatic
 E:\# 1 - University Of Johannesburg Research\#1-Third Year\Semester 2\Informatics 2B\Group Project\NextLiving\GroupProjectService\obj\Debug\GroupProjectService.csproj.CoreCompileInputs.cache
 E:\# 1 - University Of Johannesburg Research\#1-Third Year\Semester 2\Informatics 2B\Group Project\NextLiving\GroupProjectService\obj\Debug\GroupProjectService.dll
 E:\# 1 - University Of Johannesburg Research\#1-Third Year\Semester 2\Informatics 2B\Group Project\NextLiving\GroupProjectService\obj\Debug\GroupProjectService.pdb
+E:\GroupProjectEdit\MyGitHubProjects-main\GroupProjectEdit\GroupProjectEdit\GroupProjectService\bin\GroupProjectService.dll.config
+E:\GroupProjectEdit\MyGitHubProjects-main\GroupProjectEdit\GroupProjectEdit\GroupProjectService\bin\GroupProjectService.dll
+E:\GroupProjectEdit\MyGitHubProjects-main\GroupProjectEdit\GroupProjectEdit\GroupProjectService\bin\GroupProjectService.pdb
+E:\GroupProjectEdit\MyGitHubProjects-main\GroupProjectEdit\GroupProjectEdit\GroupProjectService\obj\Debug\GroupProjectService.csproj.AssemblyReference.cache
+E:\GroupProjectEdit\MyGitHubProjects-main\GroupProjectEdit\GroupProjectEdit\GroupProjectService\obj\Debug\GroupProjectService.csproj.CoreCompileInputs.cache
+E:\GroupProjectEdit\MyGitHubProjects-main\GroupProjectEdit\GroupProjectEdit\GroupProjectService\obj\Debug\GroupProjectService.dll
+E:\GroupProjectEdit\MyGitHubProjects-main\GroupProjectEdit\GroupProjectEdit\GroupProjectService\obj\Debug\GroupProjectService.pdb

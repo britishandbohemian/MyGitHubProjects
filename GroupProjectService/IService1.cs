@@ -13,41 +13,39 @@ namespace GroupProjectService
     public interface NextLivingService
     {
 
-
         //_______________________________________
         //Admin
 
         [OperationContract]
         //Add A user to the database
-        void AddAdmin(string Password, string userName);
+        int AddAdmin(string Password, string userName);
         //Delete The Users Information From the database
         void DeleteAdmin(int AdminId);
         //Edit The Users Information
         void EditAdmin(int AdminId, string UserName, string Password);
-
-
+        //To check if login is an Admin user
+        Boolean IsAdmin(int AdminId);
 
         //____________________________________
 
         //Add User Tab
         [OperationContract]
         //Add A user to the database
-        void AddUser(string Name, string Surname, string Contact, string UserType);
+        int UserLogin(string Name, string Password);
+        bool AddUser(string Name, string Surname, string Contact, string UserType);
         //Delete The Users Information From the database
         void DeleteUser(int UserId);
         //Edit The Users Information
         void EditUserData(int UserId, string Name, string Surname, string Contact, string UserType);
-
-
-
-
+        [OperationContract]
+        int updatePassword(int id, string oldPassword, string newPassword);
 
         //Add A user to the database
         //Student_____________________________
 
         //Add Student
         [OperationContract]
-        void AddStudent(string fundingStatus);
+        void AddStudent(int UserId, string fundingStatus);
 
         [OperationContract]
         //Delete The Users Information From the database
@@ -56,11 +54,6 @@ namespace GroupProjectService
         [OperationContract]
         //Edit The Users Information
         void EditStudent(int studentId,int userId, string Name, string Surname, string Contact, string UserType);
-
-
-
-
-
 
 
         //______________________
@@ -73,30 +66,26 @@ namespace GroupProjectService
 
         //Add Owner
         [OperationContract]
-        void AddOwner(string Name, string Surname, string Contact);
+        void AddOwner(int Userid);
 
         //Edit Owner
         [OperationContract]
-        void EditOwner(int userId, string Name, string Surname, string Contact);
+        void EditOwner(int userId, String Name, String Contact, int Admin);
+
+
+        //______________________
 
 
 
 
-
-
-
-        //____________Accomadation Table__________
-
+        //Accomadation Table___________________________
         //Add Accoomdation
         [OperationContract]
-        string AddAccomadation(String AccomadationName, String Location, String AccomadationRating, String AccomadationFaclities, String AccomadationDescription);
+        bool AddAccomadation(String AccomadationName, String Location, String AccomadationRating, String AccomadationFaclities, String AccomadationDescription);
 
         //Edit Accomadation
         [OperationContract]
         string EditAccomadation(int Id, String AccomadationName, String Location, String AccomadationRating, String AccomadationFaclities, String AccomadationDescription);
-
-
-        //________________________________________________
 
         //Get Accomadation via ID
         [OperationContract]
@@ -104,11 +93,7 @@ namespace GroupProjectService
 
         //Get Accomadation via ID
         [OperationContract]
-        Accomdation DeleteAccomadation(int Id);
-
-
-
-
+        void DeleteAccomadation(int Id);
 
 
         //___________________________________
@@ -121,24 +106,9 @@ namespace GroupProjectService
         [OperationContract]
         void DeleteBookmark(int BookmarkID);
 
+
+        [OperationContract]
         void EditBookmark(int StudID, int BookmarkID, int AccomdationId);
-
-        //___________________________________
-
-
-        //Add Accomadation
-        [OperationContract]
-        void AddAccomdation(string Name, string location,string Rating, string fac, string des);
-
-        //Add Accomadation
-        [OperationContract]
-        void DeleteAccomdation(int Id);
-
-        //Add Accomadation
-        [OperationContract]
-        void EditAccomdation(int Id, string Name, string location, string Rating, string fac, string des);
-
-
 
 
     }
