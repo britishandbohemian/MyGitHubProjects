@@ -30,21 +30,18 @@ namespace GroupProjectService
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAccomadationBooking(AccomadationBooking instance);
-    partial void UpdateAccomadationBooking(AccomadationBooking instance);
-    partial void DeleteAccomadationBooking(AccomadationBooking instance);
+    partial void InsertAccomadation(Accomadation instance);
+    partial void UpdateAccomadation(Accomadation instance);
+    partial void DeleteAccomadation(Accomadation instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
-    partial void InsertAccomdation(Accomdation instance);
-    partial void UpdateAccomdation(Accomdation instance);
-    partial void DeleteAccomdation(Accomdation instance);
+    partial void InsertAccomadationBooking(AccomadationBooking instance);
+    partial void UpdateAccomadationBooking(AccomadationBooking instance);
+    partial void DeleteAccomadationBooking(AccomadationBooking instance);
     partial void InsertAdmin(Admin instance);
     partial void UpdateAdmin(Admin instance);
     partial void DeleteAdmin(Admin instance);
-    partial void InsertBookMark(BookMark instance);
-    partial void UpdateBookMark(BookMark instance);
-    partial void DeleteBookMark(BookMark instance);
     partial void InsertOwner(Owner instance);
     partial void UpdateOwner(Owner instance);
     partial void DeleteOwner(Owner instance);
@@ -83,11 +80,11 @@ namespace GroupProjectService
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<AccomadationBooking> AccomadationBookings
+		public System.Data.Linq.Table<Accomadation> Accomadations
 		{
 			get
 			{
-				return this.GetTable<AccomadationBooking>();
+				return this.GetTable<Accomadation>();
 			}
 		}
 		
@@ -99,11 +96,11 @@ namespace GroupProjectService
 			}
 		}
 		
-		public System.Data.Linq.Table<Accomdation> Accomdations
+		public System.Data.Linq.Table<AccomadationBooking> AccomadationBookings
 		{
 			get
 			{
-				return this.GetTable<Accomdation>();
+				return this.GetTable<AccomadationBooking>();
 			}
 		}
 		
@@ -140,519 +137,13 @@ namespace GroupProjectService
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AccomadationBookings")]
-	public partial class AccomadationBooking : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Accomadation")]
+	public partial class Accomadation : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _BookingsId;
-		
-		private string _BookingDate;
-		
-		private string _Booking;
-		
-		private int _AccomadationID;
-		
-		private int _StudentId;
-		
-		private EntitySet<Accomdation> _Accomdations;
-		
-		private EntityRef<Student> _Student;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnBookingsIdChanging(int value);
-    partial void OnBookingsIdChanged();
-    partial void OnBookingDateChanging(string value);
-    partial void OnBookingDateChanged();
-    partial void OnBookingChanging(string value);
-    partial void OnBookingChanged();
-    partial void OnAccomadationIDChanging(int value);
-    partial void OnAccomadationIDChanged();
-    partial void OnStudentIdChanging(int value);
-    partial void OnStudentIdChanged();
-    #endregion
-		
-		public AccomadationBooking()
-		{
-			this._Accomdations = new EntitySet<Accomdation>(new Action<Accomdation>(this.attach_Accomdations), new Action<Accomdation>(this.detach_Accomdations));
-			this._Student = default(EntityRef<Student>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingsId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int BookingsId
-		{
-			get
-			{
-				return this._BookingsId;
-			}
-			set
-			{
-				if ((this._BookingsId != value))
-				{
-					this.OnBookingsIdChanging(value);
-					this.SendPropertyChanging();
-					this._BookingsId = value;
-					this.SendPropertyChanged("BookingsId");
-					this.OnBookingsIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingDate", DbType="VarChar(50)")]
-		public string BookingDate
-		{
-			get
-			{
-				return this._BookingDate;
-			}
-			set
-			{
-				if ((this._BookingDate != value))
-				{
-					this.OnBookingDateChanging(value);
-					this.SendPropertyChanging();
-					this._BookingDate = value;
-					this.SendPropertyChanged("BookingDate");
-					this.OnBookingDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Booking", DbType="NChar(10)")]
-		public string Booking
-		{
-			get
-			{
-				return this._Booking;
-			}
-			set
-			{
-				if ((this._Booking != value))
-				{
-					this.OnBookingChanging(value);
-					this.SendPropertyChanging();
-					this._Booking = value;
-					this.SendPropertyChanged("Booking");
-					this.OnBookingChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="AcoomadationID", Storage="_AccomadationID", DbType="Int")]
-		public int AccomadationID
-		{
-			get
-			{
-				return this._AccomadationID;
-			}
-			set
-			{
-				if ((this._AccomadationID != value))
-				{
-					this.OnAccomadationIDChanging(value);
-					this.SendPropertyChanging();
-					this._AccomadationID = value;
-					this.SendPropertyChanged("AccomadationID");
-					this.OnAccomadationIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentId")]
-		public int StudentId
-		{
-			get
-			{
-				return this._StudentId;
-			}
-			set
-			{
-				if ((this._StudentId != value))
-				{
-					if (this._Student.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnStudentIdChanging(value);
-					this.SendPropertyChanging();
-					this._StudentId = value;
-					this.SendPropertyChanged("StudentId");
-					this.OnStudentIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AccomadationBooking_Accomdation", Storage="_Accomdations", ThisKey="AccomadationID", OtherKey="AccomadationID")]
-		public EntitySet<Accomdation> Accomdations
-		{
-			get
-			{
-				return this._Accomdations;
-			}
-			set
-			{
-				this._Accomdations.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_AccomadationBooking", Storage="_Student", ThisKey="StudentId", OtherKey="StudentId", IsForeignKey=true)]
-		public Student Student
-		{
-			get
-			{
-				return this._Student.Entity;
-			}
-			set
-			{
-				Student previousValue = this._Student.Entity;
-				if (((previousValue != value) 
-							|| (this._Student.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Student.Entity = null;
-						previousValue.AccomadationBookings.Remove(this);
-					}
-					this._Student.Entity = value;
-					if ((value != null))
-					{
-						value.AccomadationBookings.Add(this);
-						this._StudentId = value.StudentId;
-					}
-					else
-					{
-						this._StudentId = default(int);
-					}
-					this.SendPropertyChanged("Student");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Accomdations(Accomdation entity)
-		{
-			this.SendPropertyChanging();
-			entity.AccomadationBooking = this;
-		}
-		
-		private void detach_Accomdations(Accomdation entity)
-		{
-			this.SendPropertyChanging();
-			entity.AccomadationBooking = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UserId;
-		
-		private string _UserName;
-		
-		private string _UserContact;
-		
-		private string _UserSurname;
-		
-		private string _UserType;
-		
-		private int _AdminId;
-		
-		private EntitySet<Owner> _Owners;
-		
-		private EntitySet<Student> _Students;
-		
-		private EntityRef<Admin> _Admin;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUserIdChanging(int value);
-    partial void OnUserIdChanged();
-    partial void OnUserNameChanging(string value);
-    partial void OnUserNameChanged();
-    partial void OnUserContactChanging(string value);
-    partial void OnUserContactChanged();
-    partial void OnUserSurnameChanging(string value);
-    partial void OnUserSurnameChanged();
-    partial void OnUserTypeChanging(string value);
-    partial void OnUserTypeChanged();
-    partial void OnAdminIdChanging(int value);
-    partial void OnAdminIdChanged();
-    #endregion
-		
-		public User()
-		{
-			this._Owners = new EntitySet<Owner>(new Action<Owner>(this.attach_Owners), new Action<Owner>(this.detach_Owners));
-			this._Students = new EntitySet<Student>(new Action<Student>(this.attach_Students), new Action<Student>(this.detach_Students));
-			this._Admin = default(EntityRef<Admin>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(50)")]
-		public string UserName
-		{
-			get
-			{
-				return this._UserName;
-			}
-			set
-			{
-				if ((this._UserName != value))
-				{
-					this.OnUserNameChanging(value);
-					this.SendPropertyChanging();
-					this._UserName = value;
-					this.SendPropertyChanged("UserName");
-					this.OnUserNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserContact", DbType="VarChar(50)")]
-		public string UserContact
-		{
-			get
-			{
-				return this._UserContact;
-			}
-			set
-			{
-				if ((this._UserContact != value))
-				{
-					this.OnUserContactChanging(value);
-					this.SendPropertyChanging();
-					this._UserContact = value;
-					this.SendPropertyChanged("UserContact");
-					this.OnUserContactChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserSurname", DbType="NChar(10)")]
-		public string UserSurname
-		{
-			get
-			{
-				return this._UserSurname;
-			}
-			set
-			{
-				if ((this._UserSurname != value))
-				{
-					this.OnUserSurnameChanging(value);
-					this.SendPropertyChanging();
-					this._UserSurname = value;
-					this.SendPropertyChanged("UserSurname");
-					this.OnUserSurnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserType", CanBeNull=false)]
-		public string UserType
-		{
-			get
-			{
-				return this._UserType;
-			}
-			set
-			{
-				if ((this._UserType != value))
-				{
-					this.OnUserTypeChanging(value);
-					this.SendPropertyChanging();
-					this._UserType = value;
-					this.SendPropertyChanged("UserType");
-					this.OnUserTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdminId", DbType="Int NOT NULL")]
-		public int AdminId
-		{
-			get
-			{
-				return this._AdminId;
-			}
-			set
-			{
-				if ((this._AdminId != value))
-				{
-					if (this._Admin.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAdminIdChanging(value);
-					this.SendPropertyChanging();
-					this._AdminId = value;
-					this.SendPropertyChanged("AdminId");
-					this.OnAdminIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Owner", Storage="_Owners", ThisKey="UserId", OtherKey="UserId")]
-		public EntitySet<Owner> Owners
-		{
-			get
-			{
-				return this._Owners;
-			}
-			set
-			{
-				this._Owners.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Student", Storage="_Students", ThisKey="UserId", OtherKey="StudentId")]
-		public EntitySet<Student> Students
-		{
-			get
-			{
-				return this._Students;
-			}
-			set
-			{
-				this._Students.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Admin_User", Storage="_Admin", ThisKey="AdminId", OtherKey="AdminId", IsForeignKey=true)]
-		public Admin Admin
-		{
-			get
-			{
-				return this._Admin.Entity;
-			}
-			set
-			{
-				Admin previousValue = this._Admin.Entity;
-				if (((previousValue != value) 
-							|| (this._Admin.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Admin.Entity = null;
-						previousValue.Users.Remove(this);
-					}
-					this._Admin.Entity = value;
-					if ((value != null))
-					{
-						value.Users.Add(this);
-						this._AdminId = value.AdminId;
-					}
-					else
-					{
-						this._AdminId = default(int);
-					}
-					this.SendPropertyChanged("Admin");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Owners(Owner entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_Owners(Owner entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
-		}
-		
-		private void attach_Students(Student entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_Students(Student entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Accomdations")]
-	public partial class Accomdation : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _AccomadationID;
+		private int _AccomadationId;
 		
 		private string _AccomadationName;
 		
@@ -666,16 +157,12 @@ namespace GroupProjectService
 		
 		private System.Nullable<int> _OwnerId;
 		
-		private EntityRef<Owner> _Owner;
-		
-		private EntityRef<AccomadationBooking> _AccomadationBooking;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnAccomadationIDChanging(int value);
-    partial void OnAccomadationIDChanged();
+    partial void OnAccomadationIdChanging(int value);
+    partial void OnAccomadationIdChanged();
     partial void OnAccomadationNameChanging(string value);
     partial void OnAccomadationNameChanged();
     partial void OnAccomadationLocationChanging(string value);
@@ -690,33 +177,27 @@ namespace GroupProjectService
     partial void OnOwnerIdChanged();
     #endregion
 		
-		public Accomdation()
+		public Accomadation()
 		{
-			this._Owner = default(EntityRef<Owner>);
-			this._AccomadationBooking = default(EntityRef<AccomadationBooking>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccomadationID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int AccomadationID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccomadationId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int AccomadationId
 		{
 			get
 			{
-				return this._AccomadationID;
+				return this._AccomadationId;
 			}
 			set
 			{
-				if ((this._AccomadationID != value))
+				if ((this._AccomadationId != value))
 				{
-					if (this._AccomadationBooking.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAccomadationIDChanging(value);
+					this.OnAccomadationIdChanging(value);
 					this.SendPropertyChanging();
-					this._AccomadationID = value;
-					this.SendPropertyChanged("AccomadationID");
-					this.OnAccomadationIDChanged();
+					this._AccomadationId = value;
+					this.SendPropertyChanged("AccomadationId");
+					this.OnAccomadationIdChanged();
 				}
 			}
 		}
@@ -832,10 +313,6 @@ namespace GroupProjectService
 			{
 				if ((this._OwnerId != value))
 				{
-					if (this._Owner.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnOwnerIdChanging(value);
 					this.SendPropertyChanging();
 					this._OwnerId = value;
@@ -845,70 +322,270 @@ namespace GroupProjectService
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Owner_Accomdation", Storage="_Owner", ThisKey="OwnerId", OtherKey="OwnerId", IsForeignKey=true)]
-		public Owner Owner
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserId;
+		
+		private string _UserName;
+		
+		private string _UserSurname;
+		
+		private string _UserType;
+		
+		private string _UserContact;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnUserSurnameChanging(string value);
+    partial void OnUserSurnameChanged();
+    partial void OnUserTypeChanging(string value);
+    partial void OnUserTypeChanged();
+    partial void OnUserContactChanging(string value);
+    partial void OnUserContactChanged();
+    #endregion
+		
+		public User()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int UserId
 		{
 			get
 			{
-				return this._Owner.Entity;
+				return this._UserId;
 			}
 			set
 			{
-				Owner previousValue = this._Owner.Entity;
-				if (((previousValue != value) 
-							|| (this._Owner.HasLoadedOrAssignedValue == false)))
+				if ((this._UserId != value))
 				{
+					this.OnUserIdChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Owner.Entity = null;
-						previousValue.Accomdations.Remove(this);
-					}
-					this._Owner.Entity = value;
-					if ((value != null))
-					{
-						value.Accomdations.Add(this);
-						this._OwnerId = value.OwnerId;
-					}
-					else
-					{
-						this._OwnerId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Owner");
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AccomadationBooking_Accomdation", Storage="_AccomadationBooking", ThisKey="AccomadationID", OtherKey="AccomadationID", IsForeignKey=true)]
-		public AccomadationBooking AccomadationBooking
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(50)")]
+		public string UserName
 		{
 			get
 			{
-				return this._AccomadationBooking.Entity;
+				return this._UserName;
 			}
 			set
 			{
-				AccomadationBooking previousValue = this._AccomadationBooking.Entity;
-				if (((previousValue != value) 
-							|| (this._AccomadationBooking.HasLoadedOrAssignedValue == false)))
+				if ((this._UserName != value))
 				{
+					this.OnUserNameChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._AccomadationBooking.Entity = null;
-						previousValue.Accomdations.Remove(this);
-					}
-					this._AccomadationBooking.Entity = value;
-					if ((value != null))
-					{
-						value.Accomdations.Add(this);
-						this._AccomadationID = value.AccomadationID;
-					}
-					else
-					{
-						this._AccomadationID = default(int);
-					}
-					this.SendPropertyChanged("AccomadationBooking");
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserSurname", DbType="VarChar(50)")]
+		public string UserSurname
+		{
+			get
+			{
+				return this._UserSurname;
+			}
+			set
+			{
+				if ((this._UserSurname != value))
+				{
+					this.OnUserSurnameChanging(value);
+					this.SendPropertyChanging();
+					this._UserSurname = value;
+					this.SendPropertyChanged("UserSurname");
+					this.OnUserSurnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserType", DbType="VarChar(50)")]
+		public string UserType
+		{
+			get
+			{
+				return this._UserType;
+			}
+			set
+			{
+				if ((this._UserType != value))
+				{
+					this.OnUserTypeChanging(value);
+					this.SendPropertyChanging();
+					this._UserType = value;
+					this.SendPropertyChanged("UserType");
+					this.OnUserTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserContact", DbType="VarChar(50)")]
+		public string UserContact
+		{
+			get
+			{
+				return this._UserContact;
+			}
+			set
+			{
+				if ((this._UserContact != value))
+				{
+					this.OnUserContactChanging(value);
+					this.SendPropertyChanging();
+					this._UserContact = value;
+					this.SendPropertyChanged("UserContact");
+					this.OnUserContactChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AccomadationBookings")]
+	public partial class AccomadationBooking : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _BookingsId;
+		
+		private string _BookingDate;
+		
+		private System.Nullable<int> _AcoomadationID;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnBookingsIdChanging(int value);
+    partial void OnBookingsIdChanged();
+    partial void OnBookingDateChanging(string value);
+    partial void OnBookingDateChanged();
+    partial void OnAcoomadationIDChanging(System.Nullable<int> value);
+    partial void OnAcoomadationIDChanged();
+    #endregion
+		
+		public AccomadationBooking()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingsId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int BookingsId
+		{
+			get
+			{
+				return this._BookingsId;
+			}
+			set
+			{
+				if ((this._BookingsId != value))
+				{
+					this.OnBookingsIdChanging(value);
+					this.SendPropertyChanging();
+					this._BookingsId = value;
+					this.SendPropertyChanged("BookingsId");
+					this.OnBookingsIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookingDate", DbType="VarChar(50)")]
+		public string BookingDate
+		{
+			get
+			{
+				return this._BookingDate;
+			}
+			set
+			{
+				if ((this._BookingDate != value))
+				{
+					this.OnBookingDateChanging(value);
+					this.SendPropertyChanging();
+					this._BookingDate = value;
+					this.SendPropertyChanged("BookingDate");
+					this.OnBookingDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AcoomadationID", DbType="Int")]
+		public System.Nullable<int> AcoomadationID
+		{
+			get
+			{
+				return this._AcoomadationID;
+			}
+			set
+			{
+				if ((this._AcoomadationID != value))
+				{
+					this.OnAcoomadationIDChanging(value);
+					this.SendPropertyChanging();
+					this._AcoomadationID = value;
+					this.SendPropertyChanged("AcoomadationID");
+					this.OnAcoomadationIDChanged();
 				}
 			}
 		}
@@ -946,8 +623,6 @@ namespace GroupProjectService
 		
 		private string _AdminUsername;
 		
-		private EntitySet<User> _Users;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -962,7 +637,6 @@ namespace GroupProjectService
 		
 		public Admin()
 		{
-			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
 			OnCreated();
 		}
 		
@@ -1026,19 +700,6 @@ namespace GroupProjectService
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Admin_User", Storage="_Users", ThisKey="AdminId", OtherKey="AdminId")]
-		public EntitySet<User> Users
-		{
-			get
-			{
-				return this._Users;
-			}
-			set
-			{
-				this._Users.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1058,54 +719,24 @@ namespace GroupProjectService
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_Users(User entity)
-		{
-			this.SendPropertyChanging();
-			entity.Admin = this;
-		}
-		
-		private void detach_Users(User entity)
-		{
-			this.SendPropertyChanging();
-			entity.Admin = null;
-		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BookMarks")]
-	public partial class BookMark : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BookMark")]
+	public partial class BookMark
 	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		private System.Nullable<int> _StudentId;
 		
-		private int _StudentId;
+		private System.Nullable<int> _AccomadationId;
 		
-		private int _AccomadationId;
-		
-		private int _BookmarkID;
-		
-		private EntitySet<Student> _Students;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnStudentIdChanging(int value);
-    partial void OnStudentIdChanged();
-    partial void OnAccomadationIDChanging(int value);
-    partial void OnAccomadationIDChanged();
-    partial void OnBookmarkIDChanging(int value);
-    partial void OnBookmarkIDChanged();
-    #endregion
+		private System.Nullable<int> _BookmarkID;
 		
 		public BookMark()
 		{
-			this._Students = new EntitySet<Student>(new Action<Student>(this.attach_Students), new Action<Student>(this.detach_Students));
-			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="UserId", Storage="_StudentId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int StudentId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentId", DbType="Int")]
+		public System.Nullable<int> StudentId
 		{
 			get
 			{
@@ -1115,17 +746,13 @@ namespace GroupProjectService
 			{
 				if ((this._StudentId != value))
 				{
-					this.OnStudentIdChanging(value);
-					this.SendPropertyChanging();
 					this._StudentId = value;
-					this.SendPropertyChanged("StudentId");
-					this.OnStudentIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="AccomadationId", Storage="_AccomadationId", DbType="Int")]
-		public int AccomadationID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccomadationId", DbType="Int")]
+		public System.Nullable<int> AccomadationId
 		{
 			get
 			{
@@ -1135,17 +762,13 @@ namespace GroupProjectService
 			{
 				if ((this._AccomadationId != value))
 				{
-					this.OnAccomadationIDChanging(value);
-					this.SendPropertyChanging();
 					this._AccomadationId = value;
-					this.SendPropertyChanged("AccomadationID");
-					this.OnAccomadationIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookmarkID")]
-		public int BookmarkID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BookmarkID", DbType="Int")]
+		public System.Nullable<int> BookmarkID
 		{
 			get
 			{
@@ -1155,74 +778,21 @@ namespace GroupProjectService
 			{
 				if ((this._BookmarkID != value))
 				{
-					this.OnBookmarkIDChanging(value);
-					this.SendPropertyChanging();
 					this._BookmarkID = value;
-					this.SendPropertyChanged("BookmarkID");
-					this.OnBookmarkIDChanged();
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BookMark_Student", Storage="_Students", ThisKey="StudentId", OtherKey="StudentId")]
-		public EntitySet<Student> Students
-		{
-			get
-			{
-				return this._Students;
-			}
-			set
-			{
-				this._Students.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Students(Student entity)
-		{
-			this.SendPropertyChanging();
-			entity.BookMark = this;
-		}
-		
-		private void detach_Students(Student entity)
-		{
-			this.SendPropertyChanging();
-			entity.BookMark = null;
-		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Owner")]
 	public partial class Owner : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _OwnerID;
+		private int _OwnerId;
 		
-		private int _UserID;
-		
-		private EntitySet<Accomdation> _Accomdations;
-		
-		private EntityRef<User> _User;
+		private System.Nullable<int> _UserId;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1230,100 +800,51 @@ namespace GroupProjectService
     partial void OnCreated();
     partial void OnOwnerIdChanging(int value);
     partial void OnOwnerIdChanged();
-    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanging(System.Nullable<int> value);
     partial void OnUserIdChanged();
     #endregion
 		
 		public Owner()
 		{
-			this._Accomdations = new EntitySet<Accomdation>(new Action<Accomdation>(this.attach_Accomdations), new Action<Accomdation>(this.detach_Accomdations));
-			this._User = default(EntityRef<User>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="OwnerID", Storage="_OwnerID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnerId", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int OwnerId
 		{
 			get
 			{
-				return this._OwnerID;
+				return this._OwnerId;
 			}
 			set
 			{
-				if ((this._OwnerID != value))
+				if ((this._OwnerId != value))
 				{
 					this.OnOwnerIdChanging(value);
 					this.SendPropertyChanging();
-					this._OwnerID = value;
+					this._OwnerId = value;
 					this.SendPropertyChanged("OwnerId");
 					this.OnOwnerIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="UserID", Storage="_UserID")]
-		public int UserId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
 		{
 			get
 			{
-				return this._UserID;
+				return this._UserId;
 			}
 			set
 			{
-				if ((this._UserID != value))
+				if ((this._UserId != value))
 				{
 					this.OnUserIdChanging(value);
 					this.SendPropertyChanging();
-					this._UserID = value;
+					this._UserId = value;
 					this.SendPropertyChanged("UserId");
 					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Owner_Accomdation", Storage="_Accomdations", ThisKey="OwnerId", OtherKey="OwnerId")]
-		public EntitySet<Accomdation> Accomdations
-		{
-			get
-			{
-				return this._Accomdations;
-			}
-			set
-			{
-				this._Accomdations.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Owner", Storage="_User", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.Owners.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.Owners.Add(this);
-						this._UserID = value.UserId;
-					}
-					else
-					{
-						this._UserID = default(int);
-					}
-					this.SendPropertyChanged("User");
 				}
 			}
 		}
@@ -1347,21 +868,9 @@ namespace GroupProjectService
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_Accomdations(Accomdation entity)
-		{
-			this.SendPropertyChanging();
-			entity.Owner = this;
-		}
-		
-		private void detach_Accomdations(Accomdation entity)
-		{
-			this.SendPropertyChanging();
-			entity.Owner = null;
-		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Student")]
 	public partial class Student : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1371,13 +880,7 @@ namespace GroupProjectService
 		
 		private System.Nullable<int> _UserId;
 		
-		private string _funding;
-		
-		private EntitySet<AccomadationBooking> _AccomadationBookings;
-		
-		private EntityRef<BookMark> _BookMark;
-		
-		private EntityRef<User> _User;
+		private System.Nullable<int> _FundingStatus;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1387,15 +890,12 @@ namespace GroupProjectService
     partial void OnStudentIdChanged();
     partial void OnUserIdChanging(System.Nullable<int> value);
     partial void OnUserIdChanged();
-    partial void OnFundingStatusChanging(string value);
+    partial void OnFundingStatusChanging(System.Nullable<int> value);
     partial void OnFundingStatusChanged();
     #endregion
 		
 		public Student()
 		{
-			this._AccomadationBookings = new EntitySet<AccomadationBooking>(new Action<AccomadationBooking>(this.attach_AccomadationBookings), new Action<AccomadationBooking>(this.detach_AccomadationBookings));
-			this._BookMark = default(EntityRef<BookMark>);
-			this._User = default(EntityRef<User>);
 			OnCreated();
 		}
 		
@@ -1410,10 +910,6 @@ namespace GroupProjectService
 			{
 				if ((this._StudentId != value))
 				{
-					if ((this._BookMark.HasLoadedOrAssignedValue || this._User.HasLoadedOrAssignedValue))
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnStudentIdChanging(value);
 					this.SendPropertyChanging();
 					this._StudentId = value;
@@ -1443,103 +939,22 @@ namespace GroupProjectService
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="", Storage="_funding", CanBeNull=false)]
-		public string FundingStatus
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingStatus", DbType="Int")]
+		public System.Nullable<int> FundingStatus
 		{
 			get
 			{
-				return this._funding;
+				return this._FundingStatus;
 			}
 			set
 			{
-				if ((this._funding != value))
+				if ((this._FundingStatus != value))
 				{
 					this.OnFundingStatusChanging(value);
 					this.SendPropertyChanging();
-					this._funding = value;
+					this._FundingStatus = value;
 					this.SendPropertyChanged("FundingStatus");
 					this.OnFundingStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_AccomadationBooking", Storage="_AccomadationBookings", ThisKey="StudentId", OtherKey="StudentId")]
-		public EntitySet<AccomadationBooking> AccomadationBookings
-		{
-			get
-			{
-				return this._AccomadationBookings;
-			}
-			set
-			{
-				this._AccomadationBookings.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BookMark_Student", Storage="_BookMark", ThisKey="StudentId", OtherKey="StudentId", IsForeignKey=true)]
-		public BookMark BookMark
-		{
-			get
-			{
-				return this._BookMark.Entity;
-			}
-			set
-			{
-				BookMark previousValue = this._BookMark.Entity;
-				if (((previousValue != value) 
-							|| (this._BookMark.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._BookMark.Entity = null;
-						previousValue.Students.Remove(this);
-					}
-					this._BookMark.Entity = value;
-					if ((value != null))
-					{
-						value.Students.Add(this);
-						this._StudentId = value.StudentId;
-					}
-					else
-					{
-						this._StudentId = default(int);
-					}
-					this.SendPropertyChanged("BookMark");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Student", Storage="_User", ThisKey="StudentId", OtherKey="UserId", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.Students.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.Students.Add(this);
-						this._StudentId = value.UserId;
-					}
-					else
-					{
-						this._StudentId = default(int);
-					}
-					this.SendPropertyChanged("User");
 				}
 			}
 		}
@@ -1562,18 +977,6 @@ namespace GroupProjectService
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_AccomadationBookings(AccomadationBooking entity)
-		{
-			this.SendPropertyChanging();
-			entity.Student = this;
-		}
-		
-		private void detach_AccomadationBookings(AccomadationBooking entity)
-		{
-			this.SendPropertyChanging();
-			entity.Student = null;
 		}
 	}
 }

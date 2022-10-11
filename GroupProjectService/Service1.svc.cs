@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 
 namespace GroupProjectService
 {
@@ -23,7 +19,7 @@ namespace GroupProjectService
 
         public bool AddAccomadation(string AccomadationName, string Location, string AccomadationRating, string AccomadationFaclities, string AccomadationDescription)
         {
-            var newAccommodation = new Accomdation();
+            var newAccommodation = new Accomadation();
             {
                 string Name = AccomadationName;
                 string Rating = AccomadationRating;
@@ -31,7 +27,7 @@ namespace GroupProjectService
 
             };
 
-            DB.Accomdations.InsertOnSubmit(newAccommodation);
+            DB.Accomadations.InsertOnSubmit(newAccommodation);
             try
             {
                 DB.SubmitChanges();
@@ -83,7 +79,7 @@ namespace GroupProjectService
             throw new NotImplementedException();
         }
 
-        public void AddStudent(int UserId, string fundingStatus)
+        public void AddStudent(int UserId, int fundingStatus)
         {
 
             Student student = new Student();
@@ -135,7 +131,7 @@ namespace GroupProjectService
 
             BookMark NewBooking = new BookMark();
 
-            NewBooking.AccomadationID = AccomdationId;
+            NewBooking.AccomadationId = AccomdationId;
             NewBooking.StudentId = StudID;
             NewBooking.BookmarkID = BookmarkID;
 
@@ -159,9 +155,9 @@ namespace GroupProjectService
         public void DeleteAccomadation(int Id)
         {
 
-            dynamic objAccomdation = from objAccom in DB.Accomdations where objAccom.AccomadationID == Id select objAccom;
+            dynamic objAccomdation = from objAccom in DB.Accomadations where objAccom.AccomadationId == Id select objAccom;
 
-            DB.Accomdations.DeleteOnSubmit(objAccomdation);
+            DB.Accomadations.DeleteOnSubmit(objAccomdation);
 
             SubmitChanges();
 
@@ -180,7 +176,7 @@ namespace GroupProjectService
             catch (Exception e)
             {
                 e.GetBaseException();
-    
+
             }
         }
         public void DeleteAdmin(int AdminId)
@@ -194,7 +190,6 @@ namespace GroupProjectService
 
             throw new NotImplementedException();
         }
-
 
         public void DeleteBookmark(int BookmarkID)
         {
@@ -251,7 +246,7 @@ namespace GroupProjectService
             foreach (BookMark obj in bookmark)
             {
                 obj.StudentId = StudID;
-                obj.AccomadationID = AccomdationId;
+                obj.AccomadationId = AccomdationId;
                 DB.BookMarks.InsertOnSubmit(obj);
             }
 
@@ -262,11 +257,10 @@ namespace GroupProjectService
         }
 
 
-
         public void EditStudent(int studentId, int userId, string Name, string Surname, string Contact, string UserType)
         {
             var editstudent = (from e in DB.Users
-                               where e.UserId.Equals(studentId) && e.Students.Equals(studentId)
+                               where e.UserId.Equals(studentId) && e.Student.Equals(studentId)
                                select e).FirstOrDefault();
 
             if (editstudent != null)
@@ -285,14 +279,13 @@ namespace GroupProjectService
 
         }
 
-        public Accomdation getAccomadation(int Id)
+        public Accomadation getAccomadation(int Id)
         {
-            Accomdation objToReturn = new Accomdation();
-            var accomdation = from objAccom in DB.Accomdations where objAccom.AccomadationID == Id select objAccom;
+            Accomadation objToReturn = new Accomadation();
+            var accomdation = from objAccom in DB.Accomadations where objAccom.AccomadationId == Id select objAccom;
 
-            foreach (Accomdation objAccomdarion in accomdation)
+            foreach (Accomadation objAccomdarion in accomdation)
             {
-                objToReturn.AccomadationBooking = objAccomdarion.AccomadationBooking;
                 objToReturn.AccomadationRating = objAccomdarion.AccomadationRating;
                 objToReturn.AccomadationDescription = objAccomdarion.AccomadationDescription;
                 objToReturn.AccomadationLocation = objAccomdarion.AccomadationLocation;
@@ -305,37 +298,36 @@ namespace GroupProjectService
             throw new NotImplementedException();
         }
 
-        public List<Accomdation> getAllAccomodations()
+        public List<Accomadation> getAllAccomodations()
         {
-            var accommodations = new List<Accomdation>();
+            var accommodations = new List<Accomadation>();
 
-            var accommodation = (from a in DB.Accomdations
+            var accommodation = (from a in DB.Accomadations
                                  select a);
 
-            foreach (Accomdation a in accommodation)
+            foreach (Accomadation a in accommodation)
             {
                 accommodations.Add(a);
             }
             return accommodations; ;
         }
 
-        public Accomdation getFiltering(string filter)
+        public Accomadation getFiltering(string filter)
         {
-            dynamic accommodation = new List<Accomdation>();
+            dynamic accommodation = new List<Accomadation>();
 
-            var accommodationInfo = (from a in DB.Accomdations
+            var accommodationInfo = (from a in DB.Accomadations
                                      where a.AccomadationName.Equals(filter)
                                      select a).DefaultIfEmpty();
 
-            foreach (Accomdation a in accommodationInfo)
+            foreach (Accomadation a in accommodationInfo)
             {
-                var filteredAccommodation = new Accomdation
+                var filteredAccommodation = new Accomadation
                 {
-                    AccomadationID = a.AccomadationID,
+                    AccomadationId = a.AccomadationId,
                     AccomadationName = a.AccomadationName,
                     AccomadationLocation = a.AccomadationLocation,
                     AccomadationFacilities = a.AccomadationFacilities,
-                    AccomadationBooking = a.AccomadationBooking,
                     AccomadationRating = a.AccomadationRating,
                     AccomadationDescription = a.AccomadationLocation
                 };
@@ -344,6 +336,7 @@ namespace GroupProjectService
             return accommodation;
         }
 
+        //One Know Issue
         public bool IsAdmin(int AdminId)
         {
 
@@ -420,12 +413,12 @@ namespace GroupProjectService
         public string EditAccomadation(int Id, string AccomadationName, string Location, string AccomadationRating, string AccomadationFaclities, string AccomadationDescription)
         {
 
-            var AccomadationCollection = from objAcom in DB.Accomdations where objAcom.AccomadationID == Id select objAcom;
+            var AccomadationCollection = from objAcom in DB.Accomadations where objAcom.AccomadationId == Id select objAcom;
 
 
 
 
-            foreach (Accomdation item in AccomadationCollection)
+            foreach (Accomadation item in AccomadationCollection)
             {
                 item.AccomadationName = AccomadationName;
                 item.AccomadationLocation = Location;
@@ -459,7 +452,7 @@ namespace GroupProjectService
         {
 
 
-            var owner = from objUser in DB.Users where objUser.UserId == UserId select objUser ;
+            var owner = from objUser in DB.Users where objUser.UserId == UserId select objUser;
 
             foreach (User obj in owner)
             {
@@ -479,7 +472,7 @@ namespace GroupProjectService
 
             var ownerList = from objowner in DB.Users where objowner.UserId == UserId select objowner;
 
-            foreach(User obj in ownerList)
+            foreach (User obj in ownerList)
             {
                 obj.UserName = Name;
                 obj.UserContact = Contact;

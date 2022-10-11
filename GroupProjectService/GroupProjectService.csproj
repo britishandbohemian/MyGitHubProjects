@@ -70,6 +70,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NextLiving.cs">
+      <DependentUpon>NextLiving.dbml</DependentUpon>
+    </Compile>
     <Compile Include="NextLiving.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

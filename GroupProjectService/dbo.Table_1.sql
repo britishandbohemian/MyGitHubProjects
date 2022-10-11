@@ -1,5 +1,6 @@
-﻿CREATE TABLE [dbo].[Rooms]
+﻿CREATE TABLE [dbo].[Admin]
 (
-	[RoomId] INT NOT NULL PRIMARY KEY, 
-    [AccomadationId] INT NULL
+	[AdminId] INT NOT NULL PRIMARY KEY, 
+    [AdminPassword] VARCHAR(50) NULL, 
+    [AdminUsername] VARCHAR(50) NULL
 )

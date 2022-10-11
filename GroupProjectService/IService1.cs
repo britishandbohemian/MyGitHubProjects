@@ -45,7 +45,7 @@ namespace GroupProjectService
 
         //Add Student
         [OperationContract]
-        void AddStudent(int UserId, string fundingStatus);
+        void AddStudent(int UserId, int fundingStatus);
 
         [OperationContract]
         //Delete The Users Information From the database
@@ -89,7 +89,7 @@ namespace GroupProjectService
 
         //Get Accomadation via ID
         [OperationContract]
-        Accomdation getAccomadation(int Id);
+        Accomadation getAccomadation(int Id);
 
         //Get Accomadation via ID
         [OperationContract]
